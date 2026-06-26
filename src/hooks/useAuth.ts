@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
-import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
+type LocalUser = {
+  id: string;
+  email?: string;
+  user_metadata?: Record<string, any>;
+};
+
+type LocalSession = {
+  user: LocalUser;
+};
+
 export const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<LocalUser | null>(null);
+  const [session, setSession] = useState<LocalSession | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -52,13 +61,13 @@ export const useAuth = () => {
     return { error };
   };
 
-  const forceClearSupabaseSession = () => {
+  const forceClearLocalSession = () => {
     try {
       const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (!key) continue;
-        if (key.startsWith('sb-') || key.includes('supabase.auth')) {
+        if (key === 'localAuthUser' || key === 'localAuthPassword') {
           keysToRemove.push(key);
         }
       }
@@ -72,7 +81,7 @@ export const useAuth = () => {
     // Try local sign out first; ignore errors (403 when session already gone)
     const { error } = await supabase.auth.signOut({ scope: 'local' }).catch((e) => ({ error: e }));
     // Always clear cached tokens and reset state
-    forceClearSupabaseSession();
+    forceClearLocalSession();
     setSession(null);
     setUser(null);
     return { error: error ?? null };

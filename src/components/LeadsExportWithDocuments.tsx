@@ -22,7 +22,7 @@ const LeadsExportWithDocuments = () => {
       console.log('Starting export with documents...');
 
       // Call the full-backup function which now includes lead documents
-      const response = await fetch(`https://msujaimgdxhxmtlaabvn.supabase.co/functions/v1/full-backup`, {
+      const response = await fetch(`/api/functions/full-backup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({})
@@ -80,7 +80,7 @@ const LeadsExportWithDocuments = () => {
       const formData = new FormData();
       formData.append('zipFile', importFile);
 
-      const response = await fetch(`https://msujaimgdxhxmtlaabvn.supabase.co/functions/v1/leads-import-with-documents`, {
+      const response = await fetch(`/api/functions/leads-import-with-documents`, {
         method: 'POST',
         body: formData
       });

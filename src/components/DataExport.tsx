@@ -76,7 +76,7 @@ const DataExport = () => {
     try {
       console.log('Starting full backup with documents...');
       
-      const response = await fetch(`https://msujaimgdxhxmtlaabvn.supabase.co/functions/v1/full-backup`, {
+      const response = await fetch(`/api/functions/full-backup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
