@@ -1,74 +1,63 @@
-import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
 export const Footer = () => {
-  return <footer className="bg-secondary/20 border-t border-border">
+  return (
+    <footer className="border-t border-slate-200 bg-[#0A1B2E] text-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <div>
-              <img src="/lovable-uploads/f4bd2064-0f8f-4de3-9863-bc4d9797aa3f.png" alt="AMIEL - Immobilienverwaltung seit 1988" className="max-h-16 h-auto w-auto object-contain mb-2" />
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Ihr vertrauensvoller Partner für hochwertige Mietwohnungen in Deutschland. 
-              Seit über 35 Jahren verbinden wir Menschen mit ihrem perfekten Zuhause.
+            <Link to="/" className="inline-flex items-baseline gap-2 text-2xl font-bold tracking-tight">
+              <span>SMEKT</span>
+              <span className="text-[0.56em] font-semibold tracking-[0.22em] text-slate-300">IMMO</span>
+            </Link>
+            <p className="text-sm leading-7 text-slate-300">
+              Treuhaenderische Immobilienverwaltung, technisches Property Management und digitales Interessentenverfahren.
             </p>
           </div>
 
-          {/* Services */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Services</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/mietangebote" className="hover:text-primary transition-colors">Mietangebote</Link></li>
-              <li><Link to="/vermietungsablauf" className="hover:text-primary transition-colors">Vermietungsablauf</Link></li>
-              <li><Link to="/leistungsübersicht" className="hover:text-primary transition-colors">Leistungsübersicht</Link></li>
-              <li><Link to="/kontakt" className="hover:text-primary transition-colors">Kundenservice</Link></li>
+            <h4 className="font-semibold">Navigation</h4>
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li><Link to="/" className="transition-colors hover:text-sky-300">Startseite</Link></li>
+              <li><Link to="/leistungsübersicht" className="transition-colors hover:text-sky-300">Wohnen & Service</Link></li>
+              <li><Link to="/kontakt" className="transition-colors hover:text-sky-300">Kontakt & Bewerbung</Link></li>
+              <li><Link to="/unternehmen" className="transition-colors hover:text-sky-300">Unternehmen</Link></li>
             </ul>
           </div>
 
-          {/* Cities */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Standorte</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/mietangebote?location=Berlin" className="hover:text-primary transition-colors">Berlin</Link></li>
-              <li><Link to="/mietangebote?location=Hamburg" className="hover:text-primary transition-colors">Hamburg</Link></li>
-              <li><Link to="/mietangebote?location=München" className="hover:text-primary transition-colors">München</Link></li>
-              <li><Link to="/mietangebote?location=Frankfurt" className="hover:text-primary transition-colors">Frankfurt</Link></li>
-              <li><Link to="/mietangebote?location=Düsseldorf" className="hover:text-primary transition-colors">Düsseldorf</Link></li>
+            <h4 className="font-semibold">Leistungsspektrum</h4>
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li>Mietverwaltung</li>
+              <li>Technisches Gebaeudemanagement</li>
+              <li>Kaufmaennische Abwicklung</li>
+              <li>Digitale Bewerberpruefung</li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Kontakt</h4>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <div>
-                <span>Balantstraße 55-5<br />81541 München</span>
-              </div>
-              <div>
-                <span>+49 089 244 108 610</span>
-              </div>
-              <div>
-                <span>info@amiel-immobilien.com</span>
-              </div>
-              <div>
-                <span>Mo-Fr: 9:00-18:00 Uhr</span>
-              </div>
+            <h4 className="font-semibold">Kontakt</h4>
+            <div className="space-y-3 text-sm text-slate-300">
+              <p>Balantstrasse 55-5<br />81541 Muenchen</p>
+              <p>+49 089 244 108 610</p>
+              <p>info@smeimmo.com</p>
+              <p>Mo-Fr: 9:00-18:00 Uhr</p>
             </div>
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-white/15" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-muted-foreground">
-          <div>© 2025 Amiel Immobilienverwaltung. Alle Rechte vorbehalten.</div>
-          <div className="flex space-x-6">
-            <Link to="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
-            <Link to="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link>
-            <Link to="/agb" className="hover:text-primary transition-colors">AGB</Link>
+        <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-400 md:flex-row">
+          <div>© 2026 SMEKT Verwaltungsgesellschaft mbH. Alle Rechte vorbehalten.</div>
+          <div className="flex gap-6">
+            <Link to="/impressum" className="transition-colors hover:text-sky-300">Impressum</Link>
+            <Link to="/datenschutz" className="transition-colors hover:text-sky-300">Datenschutz</Link>
+            <Link to="/agb" className="transition-colors hover:text-sky-300">AGB</Link>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };

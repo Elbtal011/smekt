@@ -15,10 +15,10 @@ const Impressum = () => {
           <Badge className="mb-4 bg-primary/10 text-primary">
             Rechtliches
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="type-section-title mb-6">
             Impressum
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="type-section-lead max-w-3xl mx-auto text-muted-foreground">
             Angaben gemäß § 5 TMG (Telemediengesetz)
           </p>
         </div>
@@ -34,7 +34,7 @@ const Impressum = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2">Firmenname</h3>
+                  <h3 className="type-detail-title mb-2">Firmenname</h3>
                   <p className="text-muted-foreground">
                     Amiel Immobilienverwaltung GmbH
                   </p>
@@ -51,7 +51,7 @@ const Impressum = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold mb-2">Amtsgericht</h3>
+                  <h3 className="type-detail-title mb-2">Amtsgericht</h3>
                   <p className="text-muted-foreground">
                     Amtsgericht München<br />
                     HRB 90221
@@ -59,7 +59,7 @@ const Impressum = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold mb-2">Umsatzsteuer-ID</h3>
+                  <h3 className="type-detail-title mb-2">Umsatzsteuer-ID</h3>
                   <p className="text-muted-foreground">
                     DE9741089
                   </p>
@@ -100,7 +100,7 @@ const Impressum = () => {
 
                 <div>
                   <p className="font-medium">E-Mail</p>
-                  <p className="text-muted-foreground">info@amiel-immobilien.com</p>
+                  <p className="text-muted-foreground">info@smeimmo.com</p>
                 </div>
               </CardContent>
             </Card>
@@ -150,7 +150,7 @@ const Impressum = () => {
             <CardContent className="prose prose-gray max-w-none">
               <div className="space-y-6 text-muted-foreground">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Haftung für Inhalte</h3>
+                  <h3 className="type-detail-title mb-3 text-foreground">Haftung für Inhalte</h3>
                   <p>
                     Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
                     allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
@@ -160,7 +160,7 @@ const Impressum = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Haftung für Links</h3>
+                  <h3 className="type-detail-title mb-3 text-foreground">Haftung für Links</h3>
                   <p>
                     Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
                     Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
@@ -169,7 +169,7 @@ const Impressum = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Urheberrecht</h3>
+                  <h3 className="type-detail-title mb-3 text-foreground">Urheberrecht</h3>
                   <p>
                     Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen 
                     Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
@@ -178,7 +178,7 @@ const Impressum = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Online-Streitbeilegung (OS)</h3>
+                  <h3 className="type-detail-title mb-3 text-foreground">Online-Streitbeilegung (OS)</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
                     <a href="https://ec.europa.eu/consumers/odr/" className="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer">

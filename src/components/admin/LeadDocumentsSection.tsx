@@ -39,6 +39,11 @@ interface LeadDocumentsSectionProps {
   onDocumentsUpdated: () => void;
 }
 
+const resolveDocumentUrl = (url?: string | null) => {
+  if (!url) return null;
+  return /^https?:\/\//i.test(url) ? url : new URL(url, window.location.origin).toString();
+};
+
 const LeadDocumentsSection: React.FC<LeadDocumentsSectionProps> = ({
   lead,
   onDocumentsUpdated
@@ -146,7 +151,7 @@ const LeadDocumentsSection: React.FC<LeadDocumentsSectionProps> = ({
       });
 
       if (error) throw error;
-      setDocumentUrl(data.url);
+      setDocumentUrl(resolveDocumentUrl(data.url));
     } catch (error) {
       console.error('View document error:', error);
       toast({
@@ -172,13 +177,21 @@ const LeadDocumentsSection: React.FC<LeadDocumentsSectionProps> = ({
 
       if (error) throw error;
 
-      // Create download link
+      const downloadUrl = resolveDocumentUrl(data.url);
+      if (!downloadUrl) throw new Error('No download URL received');
+
+      const response = await fetch(downloadUrl);
+      if (!response.ok) throw new Error('Document fetch failed');
+
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = data.url;
+      link.href = objectUrl;
       link.download = fileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      URL.revokeObjectURL(objectUrl);
 
       toast({
         title: 'Download gestartet',
@@ -357,11 +370,9 @@ const LeadDocumentsSection: React.FC<LeadDocumentsSectionProps> = ({
               )}
               
               <div className="flex justify-center gap-2 mt-4">
-                <Button asChild>
-                  <a href={documentUrl} download={viewDocument.file_name} className="gap-2">
-                    <Download className="h-4 w-4" />
-                    Herunterladen
-                  </a>
+                <Button onClick={() => downloadDocument(viewDocument.file_path, viewDocument.file_name, 'uploaded_at' in viewDocument)}>
+                  <Download className="h-4 w-4" />
+                  Herunterladen
                 </Button>
               </div>
             </div>

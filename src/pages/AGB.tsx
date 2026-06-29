@@ -15,10 +15,10 @@ const AGB = () => {
           <Badge className="mb-4 bg-primary/10 text-primary">
             Geschäftsbedingungen
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="type-section-title mb-6">
             Allgemeine Geschäftsbedingungen
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="type-section-lead max-w-3xl mx-auto text-muted-foreground">
             Gültig ab 01.01.2025 für alle Dienstleistungen der Amiel Immobilienverwaltung GmbH
           </p>
         </div>

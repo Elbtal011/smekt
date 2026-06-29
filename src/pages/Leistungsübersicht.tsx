@@ -1,309 +1,179 @@
-import React from 'react';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { 
-  Home, 
-  Search, 
-  FileText, 
-  Calculator, 
-  Users, 
-  Wrench, 
-  Shield, 
-  Phone,
-  Mail,
-  Clock,
-  Star,
-  CheckCircle,
-  Zap,
-  Calendar,
-  MapPin,
-  HeartHandshake,
-  Building,
-  Key,
-  Settings,
-  TrendingUp
-} from 'lucide-react';
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  ClipboardCheck,
+  FileSearch,
+  HandCoins,
+  ReceiptText,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+
+const services = [
+  {
+    icon: ClipboardCheck,
+    title: "Rechtssicheres Mietflächen- & Vermietungsmanagement",
+    text: "Marktgerechte Platzierung von Leerständen, strukturierte Bonitätsvorprüfung und rechtssichere Mietverträge nach aktueller Rechtsprechung.",
+  },
+  {
+    icon: Wrench,
+    title: "Proaktives technisches Gebäudemanagement",
+    text: "Turnusgemäße Objektbegehungen, Verkehrssicherungspflichten und fachgerechte Behebung von Gewährleistungs- und Bestandsschäden.",
+  },
+  {
+    icon: HandCoins,
+    title: "Transparente kaufmännische Abwicklung",
+    text: "Forderungsmanagement, treuhänderische Kautionsverwaltung und nachvollziehbare Betriebskostenabrechnungen für Mieter.",
+  },
+];
+
+const capabilities = [
+  { icon: ReceiptText, title: "Mieteingangskontrolle" },
+  { icon: FileSearch, title: "Belegprüfung" },
+  { icon: ShieldCheck, title: "Schadens-Tracking" },
+  { icon: Wrench, title: "Dienstleistersteuerung" },
+  { icon: ClipboardCheck, title: "Objektüberwachung" },
+  { icon: HandCoins, title: "Abrechnungsmanagement" },
+];
 
 const Leistungsübersicht = () => {
-  const mainServices = [
-    {
-      icon: Home,
-      title: "Immobilienvermietung",
-      description: "Professionelle Vermietung von Wohn- und Gewerbeimmobilien",
-      features: [
-        "Marktgerechte Mietpreisermittlung",
-        "Professionelle Objektpräsentation", 
-        "Mieterauswahl und Bonitätsprüfung",
-        "Vertragsgestaltung und -abwicklung"
-      ]
-    },
-    {
-      icon: Building,
-      title: "Hausverwaltung",
-      description: "Umfassende Verwaltung Ihrer Immobilie mit allen technischen und kaufmännischen Aufgaben",
-      features: [
-        "Technische Gebäudeverwaltung",
-        "Kaufmännische Verwaltung",
-        "Nebenkostenabrechnung",
-        "Instandhaltungsmanagement"
-      ]
-    },
-    {
-      icon: Search,
-      title: "Immobilienbewertung",
-      description: "Professionelle Wertermittlung für Kauf, Verkauf oder Versicherung",
-      features: [
-        "Marktwertgutachten",
-        "Beleihungswertgutachten",
-        "Versicherungswertgutachten",
-        "Erbschafts- und Scheidungsgutachten"
-      ]
-    },
-    {
-      icon: Calculator,
-      title: "Immobilienfinanzierung", 
-      description: "Beratung und Vermittlung passender Finanzierungslösungen",
-      features: [
-        "Finanzierungsberatung",
-        "Konditionsvergleich",
-        "Fördermittelberatung",
-        "Antragsbegleitung"
-      ]
-    }
-  ];
-
-  const additionalServices = [
-    {
-      icon: Wrench,
-      title: "Instandhaltung & Modernisierung",
-      description: "Koordination und Überwachung aller Instandhaltungsmaßnahmen"
-    },
-    {
-      icon: FileText,
-      title: "Mietrechtsberatung",
-      description: "Rechtssichere Beratung in allen mietrechtlichen Angelegenheiten"
-    },
-    {
-      icon: Shield,
-      title: "Versicherungsmanagement", 
-      description: "Optimierung und Verwaltung aller immobilienbezogenen Versicherungen"
-    },
-    {
-      icon: Key,
-      title: "Schlüsselservice",
-      description: "Professioneller Schlüsseldienst und Zugangsverwaltung"
-    },
-    {
-      icon: Settings,
-      title: "Energieberatung",
-      description: "Beratung zur Energieeffizienz und Sanierungsmaßnahmen"
-    },
-    {
-      icon: TrendingUp,
-      title: "Portfolioanalyse", 
-      description: "Strategische Analyse und Optimierung Ihres Immobilienportfolios"
-    }
-  ];
-
-  const processSteps = [
-    {
-      number: 1,
-      title: "Erstberatung",
-      description: "Kostenlose und unverbindliche Beratung zu Ihren Immobilienwünschen"
-    },
-    {
-      number: 2, 
-      title: "Bedarfsanalyse",
-      description: "Detaillierte Analyse Ihrer Anforderungen und Ziele"
-    },
-    {
-      number: 3,
-      title: "Maßgeschneidertes Angebot", 
-      description: "Individuell auf Sie zugeschnittene Leistungspakete"
-    },
-    {
-      number: 4,
-      title: "Professionelle Umsetzung",
-      description: "Zuverlässige und fachkundige Durchführung aller vereinbarten Leistungen"
-    }
-  ];
-
-  const advantages = [
-    {
-      icon: Star,
-      title: "35+ Jahre Erfahrung",
-      description: "Seit 1988 erfolgreich am Markt"
-    },
-    {
-      icon: Users,
-      title: "Persönlicher Service", 
-      description: "Ihr fester Ansprechpartner für alle Anliegen"
-    },
-    {
-      icon: MapPin,
-      title: "Lokale Expertise",
-      description: "Tiefgreifende Marktkenntnis in der Region"
-    },
-    {
-      icon: Clock,
-      title: "Schnelle Reaktionszeiten",
-      description: "Rückmeldung binnen 24 Stunden"
-    },
-    {
-      icon: Shield,
-      title: "Rechtssicherheit",
-      description: "Alle Verträge und Prozesse rechtlich abgesichert"
-    },
-    {
-      icon: Zap,
-      title: "Modernste Technik",
-      description: "Digitale Prozesse für maximale Effizienz"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
-      
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-primary/10 text-primary">
-            Leistungsübersicht
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Unsere Services für Sie
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Seit über 35 Jahren bieten wir umfassende Immobiliendienstleistungen 
-            mit höchster Professionalität und persönlichem Service.
-          </p>
-        </div>
 
-        {/* Main Services */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Unsere Hauptleistungen</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {mainServices.map((service, index) => (
-              <Card key={index} className="h-full">
-                <CardHeader>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
-                    </div>
+      <main>
+        <section className="property-hero-surface py-20 text-white md:py-28">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl">
+              <p className="type-eyebrow mb-5 text-sky-300">
+                Wohnen & Service
+              </p>
+              <h1 className="type-hero-title">
+                Ganzheitliche Objektbetreuung & Mieterservice.
+              </h1>
+              <p className="type-hero-lead mt-6 max-w-3xl text-slate-300">
+                Strategische Mietverwaltung und technisches Property Management aus einer Hand.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1fr] lg:items-center">
+              <div>
+                <h2 className="type-section-title">
+                  Operative Steuerung Ihrer Liegenschaften.
+                </h2>
+                <p className="type-section-lead mt-5">
+                  Ein nachhaltiges Immobilieninvestment braucht die Balance aus kaufmännischer Effizienz, technischer Funktionalität und sauberer Kommunikation im laufenden Betrieb.
+                </p>
+                <div className="mt-8 grid gap-5 sm:grid-cols-3">
+                  <div>
+                    <div className="text-2xl font-semibold text-slate-950">100%</div>
+                    <div className="mt-1 text-sm text-slate-600">Fokus auf Fremdverwaltung</div>
                   </div>
-                  <p className="text-muted-foreground">{service.description}</p>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Additional Services */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Weitere Dienstleistungen</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalServices.map((service, index) => (
-              <Card key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <service.icon className="h-8 w-8 text-primary" />
+                  <div>
+                    <div className="text-2xl font-semibold text-slate-950">24/7</div>
+                    <div className="mt-1 text-sm text-slate-600">Digitale Prozesssicht</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-semibold text-slate-950">DE</div>
+                    <div className="mt-1 text-sm text-slate-600">Bundesweite Struktur</div>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Process */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">So arbeiten wir</h2>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={step.number} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold shadow-lg">
-                  {step.number}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm">{step.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Advantages */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Warum Amiel Immobilienverwaltung?</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advantages.map((advantage, index) => (
-              <Card key={index} className="text-center p-6 border-2 hover:border-primary/20 transition-colors">
-                <advantage.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">{advantage.title}</h3>
-                <p className="text-muted-foreground text-sm">{advantage.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Pricing Info */}
-        <Card className="mb-20 bg-muted/50">
-          <CardContent className="text-center p-12">
-            <Calculator className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Transparente Preisgestaltung</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Unsere Preise sind fair, transparent und orientieren sich an der erbrachten Leistung. 
-              Versteckte Kosten gibt es bei uns nicht.
-            </p>
-            <Button size="lg">
-              <FileText className="h-5 w-5 mr-2" />
-              Kostenlose Beratung vereinbaren
-            </Button>
-          </CardContent>
-        </Card>
-
-        {/* Contact CTA */}
-        <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-          <CardContent className="text-center p-12">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <HeartHandshake className="h-8 w-8 text-primary" />
+              <img
+                src="/lovable-uploads/smekt-managed-residential.png"
+                alt="Modernes Mehrfamilienhaus im verwalteten Bestand"
+                className="h-[340px] w-full rounded-lg object-cover shadow-sm md:h-[460px]"
+              />
             </div>
-            <h2 className="text-3xl font-bold mb-4 text-foreground">Lassen Sie uns über Ihre Immobilie sprechen</h2>
-            <p className="text-xl mb-8 text-muted-foreground">
-              Kontaktieren Sie uns für eine kostenlose und unverbindliche Beratung zu unseren Services.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="default">
-                <Phone className="h-5 w-5 mr-2" />
-                +49 089 244 108 610
-              </Button>
-              <Button size="lg" variant="outline">
-                <Mail className="h-5 w-5 mr-2" />
-                info@amiel-immobilien.com
+          </div>
+        </section>
+
+        <section className="bg-slate-50 py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mb-10 max-w-3xl">
+              <h2 className="type-section-title">
+                Unser operatives Leistungsspektrum.
+              </h2>
+              <p className="type-section-lead mt-5">
+                Schlank gegliedert, damit Eigentümer und Objektmanagement schnell erkennen, wer welche Verantwortung trägt.
+              </p>
+            </div>
+
+            <div className="grid gap-5 lg:grid-cols-3">
+              {services.map((service) => {
+                const Icon = service.icon;
+
+                return (
+                  <article key={service.title} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+                    <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-md bg-slate-950 text-white">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="type-card-title">{service.title}</h3>
+                    <p className="type-card-body mt-4">{service.text}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+              <div>
+                <h2 className="type-section-title">
+                  Digital gestützt, regional wirksam.
+                </h2>
+                <p className="type-section-lead mt-5">
+                  Standardisierte Workflows und ein regionales Partnernetzwerk verbinden zentrale Steuerung mit verlässlicher Betreuung vor Ort.
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {capabilities.map((capability) => {
+                  const Icon = capability.icon;
+
+                  return (
+                    <div key={capability.title} className="flex items-center gap-4 rounded-lg border border-slate-200 bg-white p-5">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-950">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-medium text-slate-900">{capability.title}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-slate-50 py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm md:p-12">
+              <h2 className="type-section-title">
+                Interesse an betreuten Miet- oder Verwaltungsobjekten?
+              </h2>
+              <p className="type-section-lead mt-4 max-w-3xl">
+                Nutzen Sie das digitale Interessentenverfahren, damit Ihre Daten strukturiert geprüft und dem zuständigen Objektmanagement zugewiesen werden können.
+              </p>
+              <Button asChild size="lg" className="mt-8">
+                <Link to="/kontakt">
+                  Bewerbungsformular öffnen
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

@@ -15,10 +15,10 @@ const Datenschutz = () => {
           <Badge className="mb-4 bg-primary/10 text-primary">
             Datenschutz
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="type-section-title mb-6">
             Datenschutzerklärung
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="type-section-lead max-w-3xl mx-auto text-muted-foreground">
             Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 13, 14 DSGVO
           </p>
         </div>
@@ -39,7 +39,7 @@ const Datenschutz = () => {
                 <p className="font-medium">Amiel Immobilienverwaltung GmbH</p>
                 <p className="text-muted-foreground">Balantstraße 55-5, 81541 München</p>
                 <p className="text-muted-foreground">Telefon: +49 089 244 108 610</p>
-                <p className="text-muted-foreground">E-Mail: info@amiel-immobilien.com</p>
+                <p className="text-muted-foreground">E-Mail: info@smeimmo.com</p>
               </div>
             </CardContent>
           </Card>
@@ -53,7 +53,7 @@ const Datenschutz = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold mb-3">a) Beim Besuch der Website</h3>
+                <h3 className="type-detail-title mb-3">a) Beim Besuch der Website</h3>
                 <p className="text-muted-foreground mb-3">
                   Beim Aufrufen unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser 
                   automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden 
@@ -72,7 +72,7 @@ const Datenschutz = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-3">b) Bei Nutzung unseres Kontaktformulars</h3>
+                <h3 className="type-detail-title mb-3">b) Bei Nutzung unseres Kontaktformulars</h3>
                 <p className="text-muted-foreground mb-3">
                   Bei Fragen jeglicher Art bieten wir Ihnen die Möglichkeit, mit uns über ein auf der Website 
                   bereitgestelltes Formular Kontakt aufzunehmen. Dabei sind folgende Angaben erforderlich:
@@ -231,7 +231,7 @@ const Datenschutz = () => {
                 <p className="font-medium">Amiel Immobilienverwaltung GmbH</p>
                 <p className="text-muted-foreground">Datenschutz</p>
                 <p className="text-muted-foreground">Balantstraße 55-5, 81541 München</p>
-                <p className="text-muted-foreground">E-Mail: datenschutz@elbtal-immobilien.de</p>
+                <p className="text-muted-foreground">E-Mail: info@smeimmo.com</p>
               </div>
               <p className="text-muted-foreground mt-4">
                 Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung 

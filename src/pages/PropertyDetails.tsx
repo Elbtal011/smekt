@@ -99,7 +99,7 @@ const PropertyDetails = () => {
         <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Immobilie nicht gefunden</h1>
+            <h1 className="type-card-title mb-4">Immobilie nicht gefunden</h1>
             <p className="text-muted-foreground">
               Die angeforderte Immobilie konnte nicht gefunden werden.
             </p>
@@ -156,7 +156,7 @@ const PropertyDetails = () => {
                       {property.city?.name || 'Stadt nicht verfügbar'}
                     </div>
                   </div>
-                  <h1 className="text-xl md:text-2xl font-bold mb-2">{property.title}</h1>
+                  <h1 className="type-card-title mb-2">{property.title}</h1>
                   <p className="text-lg text-muted-foreground">
                     {property.address}, {property.neighborhood}
                   </p>
@@ -176,7 +176,7 @@ const PropertyDetails = () => {
             {/* Property Details */}
             <Card className="mb-6 border-0 shadow-sm rounded-xl bg-muted/40">
               <div className="p-6 pb-0">
-                <CardTitle className="text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Objektbeschreibung</CardTitle>
+                <CardTitle className="type-detail-title border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Objektbeschreibung</CardTitle>
               </div>
               <CardContent>
                 <div className="text-muted-foreground leading-relaxed mb-6">
@@ -207,7 +207,7 @@ const PropertyDetails = () => {
                 {property.features_description && (
                   <>
                     <div className="mb-6">
-                      <CardTitle className="mb-3 text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block">Ausstattung</CardTitle>
+                      <CardTitle className="type-detail-title mb-3 border-b-2 border-[#1169D4] pb-2 inline-block">Ausstattung</CardTitle>
                       <div className="text-muted-foreground leading-relaxed">
                         <div dangerouslySetInnerHTML={{
                           __html: property.features_description.replace(/\n/g, '<br />')
@@ -220,7 +220,7 @@ const PropertyDetails = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Grunddaten</h4>
+                    <h4 className="type-detail-title mb-3">Grunddaten</h4>
                     <div className="space-y-3">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">ID:</span>
@@ -281,7 +281,7 @@ const PropertyDetails = () => {
 
                 {/* Address Section */}
                 <div className="mb-6">
-                  <CardTitle className="mb-3 text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block">Adresse</CardTitle>
+                  <CardTitle className="type-detail-title mb-3 border-b-2 border-[#1169D4] pb-2 inline-block">Adresse</CardTitle>
                   <div className="space-y-2">
                     <div className="text-lg font-medium">{property.address}</div>
                     <div className="text-muted-foreground">
@@ -301,7 +301,7 @@ const PropertyDetails = () => {
 
                 {/* Energy Information */}
                 <div className="mb-6">
-                  <CardTitle className="mb-3 text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block">
+                  <CardTitle className="type-detail-title mb-3 border-b-2 border-[#1169D4] pb-2 inline-block">
                     Energie & Heizung
                   </CardTitle>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -329,7 +329,7 @@ const PropertyDetails = () => {
             {/* Contact Details */}
             <Card className="mb-6 border-0 shadow-sm rounded-xl bg-muted/40">
               <div className="p-6 pb-0">
-                <CardTitle className="text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Kontakt</CardTitle>
+                <CardTitle className="type-detail-title border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Kontakt</CardTitle>
               </div>
               <CardContent>
                 <div className="space-y-2 text-sm">
@@ -339,7 +339,7 @@ const PropertyDetails = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-muted-foreground">E-Mail:</span>
-                    <span className="font-medium break-all">info@amiel-immobilien.com</span>
+                    <span className="font-medium break-all">info@smeimmo.com</span>
                   </div>
                 </div>
               </CardContent>
@@ -348,7 +348,7 @@ const PropertyDetails = () => {
             {/* Operation Hours */}
             <Card className="mb-6 border-0 shadow-sm rounded-xl bg-muted/40">
               <div className="p-6 pb-0">
-                <CardTitle className="text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Öffnungszeiten</CardTitle>
+                <CardTitle className="type-detail-title border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Öffnungszeiten</CardTitle>
               </div>
               <CardContent>
                 <div className="space-y-2 text-sm">
@@ -394,7 +394,7 @@ const PropertyDetails = () => {
             {/* Location */}
             <Card className="border-0 shadow-sm rounded-xl bg-muted/40 overflow-hidden">
               <div className="p-6 pb-0">
-                <CardTitle className="text-lg md:text-xl border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Lage</CardTitle>
+                <CardTitle className="type-detail-title border-b-2 border-[#1169D4] pb-2 inline-block mb-6">Lage</CardTitle>
               </div>
               <CardContent className="p-0">
                 <SimpleLocationDisplay 

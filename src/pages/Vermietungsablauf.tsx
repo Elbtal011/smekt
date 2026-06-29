@@ -121,10 +121,10 @@ const Vermietungsablauf = () => {
           <Badge className="mb-4 bg-primary/10 text-primary">
             Vermietungsablauf
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="type-section-title mb-6">
             Ihr Weg zur neuen Wohnung
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="type-section-lead max-w-3xl mx-auto text-muted-foreground">
             Von der ersten Kontaktaufnahme bis zur Schlüsselübergabe - wir begleiten Sie 
             professionell durch den gesamten Vermietungsprozess.
           </p>
@@ -132,7 +132,7 @@ const Vermietungsablauf = () => {
 
         {/* Process Steps */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Der Vermietungsprozess in 7 Schritten</h2>
+          <h2 className="type-section-title text-center mb-12">Der Vermietungsprozess in 7 Schritten</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             {steps.map((step, index) => (
@@ -148,7 +148,7 @@ const Vermietungsablauf = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <step.icon className="h-5 w-5 text-primary" />
-                        <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
+                        <h3 className="type-detail-title text-foreground">{step.title}</h3>
                       </div>
                     </div>
                     
@@ -181,7 +181,7 @@ const Vermietungsablauf = () => {
               <div className="flex items-center gap-3">
                 <FileText className="h-8 w-8 text-primary" />
                 <div>
-                  <CardTitle className="text-2xl">Erforderliche Unterlagen</CardTitle>
+                  <CardTitle className="type-card-title">Erforderliche Unterlagen</CardTitle>
                   <p className="text-muted-foreground">
                     Diese Dokumente benötigen wir für Ihre Bewerbung
                   </p>
@@ -203,7 +203,7 @@ const Vermietungsablauf = () => {
 
         {/* Service Highlights */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Unser Service für Sie</h2>
+          <h2 className="type-section-title text-center mb-12">Unser Service für Sie</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <Card>
@@ -253,8 +253,8 @@ const Vermietungsablauf = () => {
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <HeartHandshake className="h-8 w-8 text-primary" />
             </div>
-            <h2 className="text-3xl font-bold mb-4 text-foreground">Bereit für Ihre neue Wohnung?</h2>
-            <p className="text-xl mb-8 text-muted-foreground">
+            <h2 className="type-section-title mb-4 text-foreground">Bereit für Ihre neue Wohnung?</h2>
+            <p className="type-section-lead mb-8 text-muted-foreground">
               Kontaktieren Sie uns noch heute und starten Sie Ihren Weg zur Traumwohnung.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -264,7 +264,7 @@ const Vermietungsablauf = () => {
               </Button>
               <Button size="lg" variant="outline">
                 <Mail className="h-5 w-5 mr-2" />
-                info@amiel-immobilien.com
+                info@smeimmo.com
               </Button>
             </div>
           </CardContent>

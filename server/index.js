@@ -146,7 +146,18 @@ function listProperties() {
 }
 
 function listContactRequests() {
-  return serializeRows(db.prepare("SELECT * FROM contact_requests ORDER BY created_at DESC").all()).map(attachRelations);
+  return serializeRows(db.prepare("SELECT * FROM contact_requests ORDER BY created_at DESC").all())
+    .map(attachRelations)
+    .map((request) => {
+      const documentsCount = db
+        .prepare("SELECT COUNT(*) AS count FROM lead_documents WHERE contact_request_id = ?")
+        .get(request.id).count;
+      return {
+        ...request,
+        documents_count: documentsCount,
+        has_documents: documentsCount > 0,
+      };
+    });
 }
 
 function analytics() {
@@ -307,6 +318,8 @@ function contactSubmit(body) {
     plz: formData.plz || "",
     ort: formData.ort || "",
     nachricht: formData.nachricht || formData.message || "",
+    lead_label: formData.lead_label || formData.leadLabel || null,
+    lead_stage: formData.lead_stage || formData.leadStage || "lead",
   });
   return ok({ success: true, request });
 }

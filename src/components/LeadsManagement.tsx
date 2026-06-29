@@ -608,12 +608,21 @@ const LeadsManagement: React.FC<LeadsManagementProps> = ({ adminUser }) => {
 
       if (error) throw error;
 
-      if (data.url) {
-        // Open document in new tab instead of downloading
-        window.open(data.url, '_blank');
-      } else {
-        throw new Error('No download URL received');
-      }
+      const downloadUrl = /^https?:\/\//i.test(data.url)
+        ? data.url
+        : new URL(data.url, window.location.origin).toString();
+      const response = await fetch(downloadUrl);
+      if (!response.ok) throw new Error('Document fetch failed');
+
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(objectUrl);
     } catch (error) {
       console.error('Error opening document:', error);
       toast({ title: 'Fehler', description: 'Fehler beim Öffnen des Dokuments', variant: 'destructive' });

@@ -110,7 +110,7 @@ const PropertyImageGallery: React.FC<PropertyImageGalleryProps> = ({
                 <Button
                   variant="secondary"
                   size="icon"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10"
+                  className="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform shadow-lg"
                   onClick={(e) => {
                     e.stopPropagation();
                     handlePrevious();
@@ -122,7 +122,7 @@ const PropertyImageGallery: React.FC<PropertyImageGalleryProps> = ({
                 <Button
                   variant="secondary"
                   size="icon"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10"
+                  className="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform shadow-lg"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleNext();
@@ -157,7 +157,7 @@ const PropertyImageGallery: React.FC<PropertyImageGalleryProps> = ({
                 <Button
                   variant="secondary"
                   size="icon"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white border-white/20"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 transform"
                   onClick={handlePrevious}
                 >
                   <ChevronLeft className="h-6 w-6" />
@@ -166,7 +166,7 @@ const PropertyImageGallery: React.FC<PropertyImageGalleryProps> = ({
                 <Button
                   variant="secondary"
                   size="icon"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white border-white/20"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 transform"
                   onClick={handleNext}
                 >
                   <ChevronRight className="h-6 w-6" />
@@ -185,7 +185,7 @@ const PropertyImageGallery: React.FC<PropertyImageGalleryProps> = ({
             <Button
               variant="secondary"
               size="icon"
-              className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white border-white/20"
+              className="absolute top-4 right-4"
               onClick={() => setIsDialogOpen(false)}
             >
               <X className="h-6 w-6" />
