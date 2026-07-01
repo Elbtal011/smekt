@@ -10,7 +10,6 @@ const Impressum = () => {
       <Header />
       
       <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-primary/10 text-primary">
             Rechtliches
@@ -19,12 +18,11 @@ const Impressum = () => {
             Impressum
           </h1>
           <p className="type-section-lead max-w-3xl mx-auto text-muted-foreground">
-            Angaben gemäß § 5 TMG (Telemediengesetz)
+            Angaben gemäß § 5 DDG
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Company Information */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
@@ -36,32 +34,23 @@ const Impressum = () => {
                 <div>
                   <h3 className="type-detail-title mb-2">Firmenname</h3>
                   <p className="text-muted-foreground">
-                    Amiel Immobilienverwaltung GmbH
+                    SMEKT Verwaltungsgesellschaft mbH
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold mb-2">Geschäftsführer</h3>
+                  <h3 className="font-semibold mb-2">Vertreten durch den Geschäftsführer</h3>
                   <p className="text-muted-foreground">
-                    Amiel Immobilienverwaltung GmbH<br />
-                    Balantstraße 55-5<br />
-                    81541 München<br />
-                    Daniel Amiel, Geschäftsführer
+                    Theo Houy
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="type-detail-title mb-2">Amtsgericht</h3>
+                  <h3 className="type-detail-title mb-2">Registereintrag</h3>
                   <p className="text-muted-foreground">
-                    Amtsgericht München<br />
-                    HRB 90221
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="type-detail-title mb-2">Umsatzsteuer-ID</h3>
-                  <p className="text-muted-foreground">
-                    DE9741089
+                    Eintragung im Handelsregister<br />
+                    Registergericht: Amtsgericht Gelsenkirchen<br />
+                    Registernummer: HRB 18458
                   </p>
                 </div>
               </CardContent>
@@ -75,16 +64,15 @@ const Impressum = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  <p className="font-medium">Amiel Immobilienverwaltung GmbH</p>
-                  <p className="text-muted-foreground">Balantstraße 55-5</p>
-                  <p className="text-muted-foreground">81541 München</p>
+                  <p className="font-medium">SMEKT Verwaltungsgesellschaft mbH</p>
+                  <p className="text-muted-foreground">Weseler Weg 5</p>
+                  <p className="text-muted-foreground">46244 Bottrop</p>
                   <p className="text-muted-foreground">Deutschland</p>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
@@ -95,12 +83,16 @@ const Impressum = () => {
               <CardContent className="space-y-4">
                 <div>
                   <p className="font-medium">Telefon</p>
-                  <p className="text-muted-foreground">+49 089 244 108 610</p>
+                  <p className="text-muted-foreground">02041 9876543</p>
                 </div>
 
                 <div>
                   <p className="font-medium">E-Mail</p>
-                  <p className="text-muted-foreground">info@smeimmo.com</p>
+                  <p className="text-muted-foreground">
+                    <a href="mailto:info@smeimmo.com" className="text-primary hover:underline">
+                      info@smeimmo.com
+                    </a>
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -108,14 +100,15 @@ const Impressum = () => {
             <Card>
               <CardHeader>
                 <CardTitle>
-                  Verantwortlicher i.S.d. § 55 Abs. 2 RStV
+                  Zuständige Aufsichtsbehörde gemäß § 34c GewO
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  <p className="font-medium">Daniel Amiel</p>
-                  <p className="text-muted-foreground">Balantstraße 55-5</p>
-                  <p className="text-muted-foreground">81541 München</p>
+                  <p className="font-medium">Stadt Bottrop</p>
+                  <p className="text-muted-foreground">Straßen- und Verkehrsamt – Abteilung Gewerbeangelegenheiten</p>
+                  <p className="text-muted-foreground">Ernst-Wilczok-Platz 1</p>
+                  <p className="text-muted-foreground">46236 Bottrop</p>
                 </div>
               </CardContent>
             </Card>
@@ -123,76 +116,18 @@ const Impressum = () => {
             <Card>
               <CardHeader>
                 <CardTitle>
-                  Berufsaufsichtsbehörde
+                  Rechtlicher Hinweis
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <p className="text-muted-foreground">
-                    Industrie- und Handelskammer für München und Oberbayern<br />
-                    Balanstraße 55–59<br />
-                    81541 München
+                    Diese Angaben entsprechen den bereitgestellten Impressumsdaten.
                   </p>
                 </div>
               </CardContent>
             </Card>
           </div>
-        </div>
-
-        {/* Legal Information */}
-        <div className="mt-12">
-          <Card>
-            <CardHeader>
-                <CardTitle>
-                  Haftungsausschluss
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none">
-              <div className="space-y-6 text-muted-foreground">
-                <div>
-                  <h3 className="type-detail-title mb-3 text-foreground">Haftung für Inhalte</h3>
-                  <p>
-                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
-                    allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
-                    unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach 
-                    Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="type-detail-title mb-3 text-foreground">Haftung für Links</h3>
-                  <p>
-                    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
-                    Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
-                    Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="type-detail-title mb-3 text-foreground">Urheberrecht</h3>
-                  <p>
-                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen 
-                    Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
-                    Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="type-detail-title mb-3 text-foreground">Online-Streitbeilegung (OS)</h3>
-                  <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
-                    <a href="https://ec.europa.eu/consumers/odr/" className="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer">
-                      https://ec.europa.eu/consumers/odr/
-                    </a>
-                  </p>
-                  <p className="mt-2">
-                    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
-                    Verbraucherschlichtungsstelle teilzunehmen.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
 

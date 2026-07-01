@@ -12,7 +12,7 @@ export const Footer = () => {
               <span className="text-[0.56em] font-semibold tracking-[0.22em] text-slate-300">IMMO</span>
             </Link>
             <p className="text-sm leading-7 text-slate-300">
-              Treuhaenderische Immobilienverwaltung, technisches Property Management und digitales Interessentenverfahren.
+              Kompetente Immobilienverwaltung, technisches Property Management und qualifizierte Mieterauswahl. Wir sichern die optimale und wertstabile Betreuung Ihrer Objekte.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Kontakt</h4>
             <div className="space-y-3 text-sm text-slate-300">
-              <p>Balantstrasse 55-5<br />81541 Muenchen</p>
+              <p>Weseler Weg 5<br />46244 Bottrop<br />Deutschland</p>
               <p>+49 089 244 108 610</p>
               <p>info@smeimmo.com</p>
               <p>Mo-Fr: 9:00-18:00 Uhr</p>
