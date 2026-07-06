@@ -23,6 +23,7 @@ type FormState = {
   salutation: string;
   firstName: string;
   lastName: string;
+  middleName: string;
   birthDate: string;
   birthPlace: string;
   nationality: string;
@@ -42,6 +43,7 @@ const initialForm: FormState = {
   salutation: "",
   firstName: "",
   lastName: "",
+  middleName: "",
   birthDate: "",
   birthPlace: "",
   nationality: "Deutschland",
@@ -55,8 +57,8 @@ const initialForm: FormState = {
 
 const fileGroupLabels: Record<FileGroup, string> = {
   income: "Einkommensnachweise der letzten 3 Monate",
-  identity: "Identitaetsnachweis",
-  credit: "Freiwillige Bonitaetsunterlagen",
+  identity: "Gültiges Ausweisdokument (Lichtbildausweis / Reisepass – Vorder- und Rückseite)",
+  credit: "Freiwillige Bonitätsunterlagen",
 };
 
 const documentTypes: Record<FileGroup, string> = {
@@ -97,7 +99,7 @@ export const ApplicationContactForm = () => {
         if (active && Array.isArray(items)) setCities(items);
       })
       .catch(() => {
-        if (active) setCities(["Berlin", "Hamburg", "Muenchen", "Sonstige (Manuelle Erfassung)"]);
+        if (active) setCities(["Berlin", "Hamburg", "München", "Sonstige (Manuelle Erfassung)"]);
       });
 
     return () => {
@@ -111,29 +113,29 @@ export const ApplicationContactForm = () => {
 
   const validateStep = (step: number) => {
     if (step === 1) {
-      if (!form.city.trim()) return "Bitte geben Sie den gewuenschten Standort an.";
-      if (!form.reference.trim()) return "Bitte geben Sie die Objekt-Referenz oder Strasse an.";
+      if (!form.city.trim()) return "Bitte geben Sie den gewünschten Standort an.";
+      if (!form.reference.trim()) return "Bitte geben Sie die Objekt-Referenz oder Straße an.";
       if (!form.moveInDate) return "Bitte geben Sie den angestrebten Mietbeginn an.";
-      if (!form.salutation) return "Bitte waehlen Sie eine Anredeform.";
+      if (!form.salutation) return "Bitte wählen Sie eine Anredeform.";
       if (!form.firstName.trim()) return "Bitte geben Sie den Vornamen an.";
       if (!form.lastName.trim()) return "Bitte geben Sie den Nachnamen an.";
       if (!form.birthDate) return "Bitte geben Sie das Geburtsdatum an.";
       if (!form.birthPlace.trim()) return "Bitte geben Sie den Geburtsort an.";
-      if (!form.nationality.trim()) return "Bitte geben Sie die Staatsangehoerigkeit an.";
+      if (!form.nationality.trim()) return "Bitte geben Sie die Staatsangehörigkeit an.";
       if (!form.occupants.trim()) return "Bitte geben Sie die Anzahl einziehender Personen an.";
     }
 
     if (step === 2) {
       if (!form.address.trim()) return "Bitte geben Sie die aktuelle Wohnanschrift an.";
       if (!form.postalCity.trim()) return "Bitte geben Sie PLZ und Ort an.";
-      if (!PHONE_PATTERN.test(form.phone)) return "Bitte geben Sie eine gueltige Telefonnummer ein.";
-      if (!EMAIL_PATTERN.test(form.email)) return "Bitte geben Sie eine gueltige E-Mail-Adresse ein.";
+      if (!PHONE_PATTERN.test(form.phone)) return "Bitte geben Sie eine gültige Telefonnummer ein.";
+      if (!EMAIL_PATTERN.test(form.email)) return "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
     }
 
     if (step === 3) {
       if (!files.income.length) return "Bitte laden Sie Einkommensnachweise hoch.";
-      if (!files.identity.length) return "Bitte laden Sie einen Identitaetsnachweis hoch.";
-      if (!consentData || !consentTruth) return "Bitte bestaetigen Sie beide Pflicht-Erklaerungen.";
+      if (!files.identity.length) return "Bitte laden Sie ein gültiges Ausweisdokument hoch.";
+      if (!consentData || !consentTruth) return "Bitte bestätigen Sie beide Pflicht-Erklärungen.";
     }
 
     return null;
@@ -146,7 +148,7 @@ export const ApplicationContactForm = () => {
   const goToNextStep = () => {
     const error = validateStep(currentStep);
     if (error) {
-      toast({ title: "Angaben pruefen", description: error, variant: "destructive" });
+      toast({ title: "Angaben prüfen", description: error, variant: "destructive" });
       return;
     }
 
@@ -165,8 +167,8 @@ export const ApplicationContactForm = () => {
 
     if (invalidFile) {
       toast({
-        title: "Datei nicht zulaessig",
-        description: "Bitte laden Sie ausschliesslich PDF- oder JPEG-Dateien mit maximal 10 MB je Datei hoch.",
+        title: "Datei nicht zulässig",
+        description: "Bitte laden Sie ausschließlich PDF- oder JPEG-Dateien mit maximal 10 MB je Datei hoch.",
         variant: "destructive",
       });
       return;
@@ -177,16 +179,17 @@ export const ApplicationContactForm = () => {
 
   const buildMessage = () =>
     [
-      "Online-Bewerberdatenblatt",
-      `Gewuenschter Standort / Stadt: ${form.city}`,
-      `Objekt-Referenznummer / Strasse: ${form.reference}`,
+      "Offizielles Bewerbungsdatenblatt",
+      `Objektstandort / Stadt: ${form.city}`,
+      `Objekt-Referenznummer / Straße: ${form.reference}`,
       `Klassifikation: ${form.classification}`,
       `Einzugsdatum: ${form.moveInDate}`,
       `Geburtsdatum: ${form.birthDate}`,
       `Geburtsort: ${form.birthPlace}`,
-      `Staatsangehoerigkeit: ${form.nationality}`,
+      `Zweitname / Weitere Vornamen: ${form.middleName || "-"}`,
+      `Staatsangehörigkeit: ${form.nationality}`,
       `Einziehende Personen: ${form.occupants}`,
-      `Gegenwaertige Wohnanschrift: ${form.address}`,
+      `Aktuelle Meldeanschrift laut Ausweis: ${form.address}`,
       `PLZ & Ort: ${form.postalCity}`,
       `Nachricht: ${form.message || "-"}`,
     ].join("\n");
@@ -223,7 +226,7 @@ export const ApplicationContactForm = () => {
     const validationError = validateAll();
 
     if (validationError) {
-      toast({ title: "Angaben pruefen", description: validationError, variant: "destructive" });
+      toast({ title: "Angaben prüfen", description: validationError, variant: "destructive" });
       return;
     }
 
@@ -251,7 +254,7 @@ export const ApplicationContactForm = () => {
 
       toast({
         title: "Bewerbung eingereicht",
-        description: "Ihre Daten und Dokumente wurden dem Objektmanagement uebermittelt.",
+        description: "Ihre Daten und Dokumente wurden dem Objektmanagement übermittelt.",
       });
 
       setForm(initialForm);
@@ -261,7 +264,7 @@ export const ApplicationContactForm = () => {
       setCurrentStep(1);
     } catch (error: any) {
       toast({
-        title: "Uebermittlung fehlgeschlagen",
+        title: "Übermittlung fehlgeschlagen",
         description: error?.message || "Bitte versuchen Sie es erneut.",
         variant: "destructive",
       });
@@ -274,11 +277,17 @@ export const ApplicationContactForm = () => {
     <form onSubmit={handleSubmit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8">
       <div className="border-b border-slate-200 pb-6">
         <h2 className="type-card-title">
-          Offizielles Online-Bewerberdatenblatt
+          Offizielles Bewerbungsdatenblatt
         </h2>
         <p className="type-detail-body mt-3">
-          Alle Pflichtfelder und Dokumente werden zur Validierung Ihrer Anfrage benoetigt.
+          Alle Pflichtfelder und Dokumente werden zur Validierung Ihrer Anfrage benötigt.
         </p>
+        <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950">
+          <p className="font-semibold">Rechtlicher Hinweis zur Antragstellung:</p>
+          <p className="mt-1">
+            Die Identitäts- und Bonitätsprüfung erfordert eine vollständige Übereinstimmung Ihrer Daten mit den Melderegister- und Ausweisdaten. Bitte tragen Sie alle persönlichen Daten identisch zu Ihrem gültigen Ausweisdokument ein. Unvollständige Angaben oder Abweichungen (z. B. fehlende Zweitnamen oder abweichende Schreibweisen bei Geburtsorten) können im System nicht verarbeitet werden.
+          </p>
+        </div>
         <div className="mt-5 flex flex-wrap gap-2">
           {stepLabels.map((label, index) => {
             const step = index + 1;
@@ -308,11 +317,11 @@ export const ApplicationContactForm = () => {
           <>
             <fieldset className="space-y-5">
               <legend className="type-detail-title mb-5">
-                1. Wunschimmobilie & Standortdaten
+                1. Wunschimmobilie
               </legend>
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="city">Gewuenschter Standort / Stadt *</Label>
+                  <Label htmlFor="city">Objektstandort / Stadt *</Label>
                   <Input
                     id="city"
                     list="city-options"
@@ -328,7 +337,7 @@ export const ApplicationContactForm = () => {
                   </datalist>
                 </div>
                 <div>
-                  <Label htmlFor="reference">Objekt-Referenznummer / Strasse *</Label>
+                  <Label htmlFor="reference">Objekt-Referenznummer / Straße *</Label>
                   <Input
                     id="reference"
                     value={form.reference}
@@ -366,7 +375,7 @@ export const ApplicationContactForm = () => {
 
             <fieldset className="space-y-5">
               <legend className="type-detail-title mb-5">
-                2. Identitaets- und Stammdaten des Hauptmieters
+                2. Stammdaten des Hauptmieters
               </legend>
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
@@ -378,7 +387,7 @@ export const ApplicationContactForm = () => {
                     required
                     className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
                   >
-                    <option value="">Bitte waehlen</option>
+                    <option value="">Bitte wählen</option>
                     <option>Herr</option>
                     <option>Frau</option>
                     <option>Divers</option>
@@ -398,7 +407,7 @@ export const ApplicationContactForm = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="firstName">Vollstaendiger Vorname *</Label>
+                  <Label htmlFor="firstName">Vollständiger Vorname *</Label>
                   <Input
                     id="firstName"
                     value={form.firstName}
@@ -414,6 +423,15 @@ export const ApplicationContactForm = () => {
                     value={form.lastName}
                     onChange={(event) => update("lastName", event.target.value)}
                     required
+                    className="mt-2"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="middleName">Zweitname / Weitere Vornamen (Optional)</Label>
+                  <Input
+                    id="middleName"
+                    value={form.middleName}
+                    onChange={(event) => update("middleName", event.target.value)}
                     className="mt-2"
                   />
                 </div>
@@ -439,7 +457,7 @@ export const ApplicationContactForm = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="nationality">Staatsangehoerigkeit / Nationalitaet *</Label>
+                  <Label htmlFor="nationality">Staatsangehörigkeit *</Label>
                   <Input
                     id="nationality"
                     value={form.nationality}
@@ -460,13 +478,14 @@ export const ApplicationContactForm = () => {
             </legend>
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <Label htmlFor="address">Gegenwaertige Wohnanschrift *</Label>
+                <Label htmlFor="address">Aktuelle Meldeanschrift (laut Ausweis) *</Label>
                 <Input
                   id="address"
                   value={form.address}
                   onChange={(event) => update("address", event.target.value)}
                   required
                   className="mt-2"
+                  placeholder="Hauptstraße 12 / 4"
                 />
               </div>
               <div>
@@ -477,11 +496,11 @@ export const ApplicationContactForm = () => {
                   onChange={(event) => update("postalCity", event.target.value)}
                   required
                   className="mt-2"
-                  placeholder="80331 Muenchen"
+                  placeholder="80331 München"
                 />
               </div>
               <div>
-                <Label htmlFor="phone">Primaere Telefonnummer *</Label>
+                <Label htmlFor="phone">Primäre Telefonnummer *</Label>
                 <Input
                   id="phone"
                   type="tel"
@@ -505,7 +524,7 @@ export const ApplicationContactForm = () => {
               </div>
             </div>
             <div>
-              <Label htmlFor="message">Ergaenzende Angaben</Label>
+              <Label htmlFor="message">Ergänzende Angaben</Label>
               <Textarea
                 id="message"
                 value={form.message}
@@ -537,7 +556,7 @@ export const ApplicationContactForm = () => {
                   </div>
                   <div className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700">
                     <UploadCloud className="h-4 w-4" />
-                    Datei auswaehlen
+                    Datei auswählen
                   </div>
                   <input
                     type="file"
@@ -558,13 +577,13 @@ export const ApplicationContactForm = () => {
           <label className="flex gap-3 text-sm leading-6 text-slate-700">
             <Checkbox checked={consentData} onCheckedChange={(checked) => setConsentData(checked === true)} required />
             <span>
-              Ich willige ein, dass die SMEKT Verwaltungsgesellschaft mbH meine personenbezogenen Daten und Dokumente zum Zweck der Bonitaetspruefung und Mietobjektvergabe verarbeitet.
+              Ich willige ein, dass die SMEKT Verwaltungsgesellschaft mbH meine personenbezogenen Daten und Dokumente zum Zweck der Bonitätsprüfung und Mietobjektvergabe verarbeitet.
             </span>
           </label>
           <label className="flex gap-3 text-sm leading-6 text-slate-700">
             <Checkbox checked={consentTruth} onCheckedChange={(checked) => setConsentTruth(checked === true)} required />
             <span>
-              Ich versichere, dass saemtliche Angaben in diesem Online-Datenblatt wahrheitsgemaess und vollstaendig sind.
+              Ich versichere, dass sämtliche Angaben in diesem Online-Datenblatt wahrheitsgemäß und vollständig sind.
             </span>
           </label>
         </div>
@@ -572,16 +591,16 @@ export const ApplicationContactForm = () => {
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-between">
         <Button type="button" variant="outline" onClick={goToPreviousStep} disabled={currentStep === 1}>
-          Zurueck
+          Zurück
         </Button>
 
         {currentStep < 3 ? (
           <Button type="button" size="lg" onClick={goToNextStep}>
-            Naechster Schritt
+            Nächster Schritt
           </Button>
         ) : (
           <Button type="submit" size="lg" className="sm:min-w-[320px]" disabled={isSubmitting}>
-            {isSubmitting ? "Daten werden uebermittelt..." : "Bewerbungsdaten verschluesselt einreichen"}
+            {isSubmitting ? "Daten werden übermittelt..." : "Anfrage einreichen"}
             {!isSubmitting && <CheckCircle2 className="h-4 w-4" />}
           </Button>
         )}

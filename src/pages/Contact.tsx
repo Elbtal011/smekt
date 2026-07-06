@@ -1,12 +1,14 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Mail, MapPin, Phone, Scale } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ApplicationContactForm } from "@/components/ApplicationContactForm";
 
 const contactDetails = [
-  { icon: Phone, label: "Telefon", value: "+49 089 244 108 610" },
+  { icon: Phone, label: "Telefon", value: "02041 9876543" },
   { icon: Mail, label: "E-Mail", value: "info@smeimmo.com" },
-  { icon: MapPin, label: "Sitz", value: "Balantstraße 55-5, 81541 München" },
+  { icon: MapPin, label: "Anschrift", value: "Weseler Weg 5, 46244 Bottrop" },
+  { icon: Building2, label: "Unternehmen", value: "SMEKT Verwaltungsgesellschaft mbH" },
+  { icon: Scale, label: "Geschäftsführer", value: "Theo Houy" },
 ];
 
 const Contact = () => {
@@ -19,13 +21,13 @@ const Contact = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl">
               <p className="type-eyebrow mb-5 text-sky-300">
-                Kontakt & digitales Bewerbungsverfahren
+                IHR DIGITALES BEWERBUNGSVERFAHREN
               </p>
               <h1 className="type-hero-title">
-                Interessenten-Verfahren für Miet- und Verwaltungsobjekte.
+                Bewerbungsportal für Mietobjekte
               </h1>
               <p className="type-hero-lead mt-6 max-w-3xl text-slate-300">
-                Strukturierte Datenerfassung für eine beschleunigte Zuteilung und Bearbeitung.
+                Bitte halten Sie Ihre Daten und Dokumente bereit. Eine präzise Eingabe sichert Ihnen eine bevorzugte und beschleunigte Bearbeitung.
               </p>
             </div>
           </div>
@@ -39,20 +41,37 @@ const Contact = () => {
               <aside className="space-y-6 lg:sticky lg:top-28">
                 <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                   <h2 className="type-card-title">
-                    Vorprüfung und Zuweisung
+                    Unternehmensdaten
                   </h2>
-                  <p className="type-card-body mt-4">
-                    Nach erfolgreicher Übermittlung wird Ihre Anfrage validiert und dem zuständigen Objektmanager zugewiesen.
-                  </p>
+                  <div className="type-card-body mt-4 space-y-3">
+                    <p>
+                      <span className="font-semibold text-slate-950">Firmenname:</span>{" "}
+                      SMEKT Verwaltungsgesellschaft mbH
+                    </p>
+                    <p>
+                      <span className="font-semibold text-slate-950">
+                        Vertreten durch den Geschäftsführer:
+                      </span>{" "}
+                      Theo Houy
+                    </p>
+                    <p>
+                      <span className="font-semibold text-slate-950">Registereintrag:</span>{" "}
+                      Eintragung im Handelsregister, Registergericht Amtsgericht
+                      Gelsenkirchen, Registernummer HRB 18458
+                    </p>
+                  </div>
                 </div>
 
                 <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                   <h3 className="type-card-title">
-                    Datenschutzrechtlicher Compliance-Hinweis
+                    Zuständige Aufsichtsbehörde gemäß § 34c GewO
                   </h3>
-                  <p className="type-card-body mt-4">
-                    Die Erhebung Ihrer Daten erfolgt zweckgebunden im Rahmen vorvertraglicher Maßnahmen gemäß Art. 6 Abs. 1 lit. b DSGVO. Sensible Dokumente werden ausschließlich durch autorisiertes Personal gesichtet.
-                  </p>
+                  <div className="type-card-body mt-4 space-y-2">
+                    <p className="font-semibold text-slate-950">Stadt Bottrop</p>
+                    <p>Straßen- und Verkehrsamt - Abteilung Gewerbeangelegenheiten</p>
+                    <p>Ernst-Wilczok-Platz 1</p>
+                    <p>46236 Bottrop</p>
+                  </div>
                 </div>
 
                 <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">

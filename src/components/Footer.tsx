@@ -30,9 +30,9 @@ export const Footer = () => {
             <h4 className="font-semibold">Leistungsspektrum</h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>Mietverwaltung</li>
-              <li>Technisches Gebaeudemanagement</li>
-              <li>Kaufmaennische Abwicklung</li>
-              <li>Digitale Bewerberpruefung</li>
+              <li>Technisches Gebäudemanagement</li>
+              <li>Kaufmännische Abwicklung</li>
+              <li>Digitale Bewerberprüfung</li>
             </ul>
           </div>
 
